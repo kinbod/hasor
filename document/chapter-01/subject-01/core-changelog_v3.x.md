@@ -1,15 +1,26 @@
-﻿
-### Hasor-Core v3.2.0 (2017-06-?)
+﻿### Hasor-Core v3.2.1 (2017-10-17)
+**新增**
+    01. DataQL，执行引擎新增 jsr223 兼容。从这个版本开始可以使用 jsr223 的方式使用 DataQL 了。
+    02. DataQL UDF 新增 manager 接口方便管理和注册。
+**改进**
+    01. 优化 dataQL 函数注册更加方便。
+    02. 优化 ApiBinder 在 toString 时的提示信息。
+    03. plugin 项目的插件依赖改为弱依赖。
+**修复**
+    01. 修复 dataQL 表达式计算时 == 判断出现异常的问题。
+    02. fix plugins 插件中配置文件错乱的问题。
+    03. fix RsfWebModule 已经删除但是配置依然存在的问题。
+
+### Hasor-Core v3.2.0 (2017-10-15)
 **新增**
     01. 新增内置 Freemarker 渲染器，如想使用该渲染引擎开发者还需要额外依赖 freemarker 的 jar 包。
-    02. 新增内置 DataQL，服务查询引擎，语法上参考了 GraphQL 并做了适量的减法和语法改造形成 Hasor 特有的服务查询引擎
+    02. 新增内置 DataQL，服务查询引擎，全面提供 “数据库 + 服务” 整合查询，并为查询结果提供全面的数据整合能力。
     03. 新增内置 Json 渲染器，JSON 渲染引擎会按照下面顺序尝试寻找可用的json库：fastjson、Gson
     04. 内置JSON渲染引擎，可以通过 apiBinder.bind(JsonRenderEngine.class) 方式绕过内部查找机制直接使用用户自定义的json渲染器。
 **改进**
     01. EventContext 接口增加 fireSyncEventWithEspecial 方法，可以用于指定同步事件是否以独立线程运行。
     02. ContextClassLoaderLocal 类移动位置。
-    03. 已有 DB 框架更名为 Data框架，全面提供 “数据库 + 服务” 整合查询，并为查询结果提供全面的数据整合能力。
-    04. 已有 DBModule 删除，功能被整合到 DataApiBinder 接口中。
+    03. 已有 DBModule 删除，功能被整合到 DataApiBinder 接口中。
 **修复**
     01. 修复当 aop 类中出现静态代码块，静态方法时。生成了错误的动态字节码。
     02. Fix @Produces 注解工作时的一些问题。
